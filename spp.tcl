@@ -4,6 +4,7 @@
 set options(Input)      ""
 set options(Output)     "output"
 set options(Verbose)    1
+set options(Force)      0
 set options(ScriptDir)  ""
 set options(ScriptName) "smacro.tcl"
 set options(ScriptFile) "smacro.tcl"
@@ -58,14 +59,57 @@ proc ProcessFile { filename } {
     if { $expType != "" } {
 
         # Process the file through the smacro script
+
         PrintMessage "Processing: $filename"
         smacro::Process $filename $dstFile $expType ""
 
     } else {
 
         # Just copy it across
-        PrintMessage "Copying:    $filename"
-        file copy -force -- $filename $dstFile
+
+        set copy 0
+
+        # Copy if the force flag is set
+        if { $options(Force) } {
+
+            set copy 1
+
+        } else {
+
+            # Copy if the destination file does not yet exist
+            if { [file exists $dstFile] == 0 } {
+
+                set copy 1
+
+            } else {
+
+                set srcSize [file size $filename]
+                set dstSize [file size $dstFile]
+
+                # Copy if there is a size mismatch
+                if { $srcSize != $dstSize } {
+
+                    set copy 1
+
+                } else {
+
+                    set srcTime [file mtime $filename]
+                    set dstTime [file mtime $dstFile]
+
+                    # Copy if the modification time is newer
+                    if { $dstTime < $srcTime } {
+
+                        set copy 1
+                    }
+                }
+            }
+        }
+
+        if { $copy } {
+
+            PrintMessage "Copying:    $filename"
+            file copy -force -- $filename $dstFile
+        }
     }
 }
 
@@ -100,6 +144,7 @@ proc Usage { } {
     puts "  -o, --output    Target directory for generated files"
     puts "  -s, --silent    Enables silent operation"
     puts "  -t, --smacro    Specifies directory of the smacro script"
+    puts "  -f, --force     Turn off timestamp check when copying files"
     puts "  -h, --help      Print this message"
 }
 
@@ -130,6 +175,10 @@ proc ParseOptions { argv } {
             "-s" -
             "--silent" {
                 set options(Verbose) 0
+            }
+            "-f" -
+            "--force" {
+                set options(Force) 1
             }
             "-t" -
             "--smacro" {
