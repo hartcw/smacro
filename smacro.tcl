@@ -57,7 +57,7 @@ proc ::smacro::GetValue { var } {
 
     if { [info exists values($var)] } {
 
-        set $values($var)
+        set value $values($var)
     }
 
     return $value
