@@ -118,7 +118,7 @@ proc ProcessPath { path } {
     global options
 
     # Find files in this directory
-    set files [glob -nocomplain -directory $path -types f -- *]
+    set files [glob -nocomplain -directory $path -types f hidden -- .* *]
 
     # Now process each file
     foreach file [lsort $files] {
@@ -127,7 +127,7 @@ proc ProcessPath { path } {
     }
 
     # Retrieve the list of paths within the directory
-    set subpaths [glob -nocomplain -directory $path -types d -- *]
+    set subpaths [glob -nocomplain -directory $path -types d hidden -- *]
 
     # Now recursively process each directory
     foreach subpath [lsort $subpaths] {
