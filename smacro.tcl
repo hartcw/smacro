@@ -40,6 +40,7 @@ proc ::smacro::PrintError { error } {
 
 proc ::smacro::Exists { var } {
 
+    variable values
     return [info exists values($var)]
 }
 
