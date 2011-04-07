@@ -9,11 +9,13 @@ Embedding Code
 The embedded code must be contained with specific markers within the file. Three types of markers are currently supported.
 
 * C/C++ preprocessor directives
-    #tcl 'some TCL code'
+>    `#tcl 'some TCL code'`
+
 * C++ single line comments (compatible with css and javascript)
-    // tcl 'some TCL code'
+>    `// tcl 'some TCL code'`
+
 * Xml style comments
-    <!-- tcl 'some TCL code' -->
+>    `<!-- tcl 'some TCL code' -->`
 
 Examples
 --------
@@ -33,5 +35,4 @@ Smacro is licensed under the MIT license.
 
 Acknowledgements
 ----------------
-Smacro was designed and implemented by Francis Hart.
-http://www.hartcw.com
+Smacro was designed and implemented by Francis Hart for [Hart Codeworks](http://www.hartcw.com).
