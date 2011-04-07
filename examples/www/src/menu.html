@@ -1,0 +1,14 @@
+<ul>
+    <li><a href='/'>Home</a></li>
+    <!-- tcl
+        set path [smacro::GetInputPath]
+        set subdirs [glob -nocomplain -directory $path -types d -- *]
+        foreach subdir $subdirs {
+            if { [file exists [file join $subdir index.html]] } {
+                set name [file tail $subdir]
+                set title [string totitle $name]
+                puts "<li><a href='/$name'>$title</a></li>"
+            }
+        }
+    -->
+</ul>

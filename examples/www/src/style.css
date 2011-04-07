@@ -1,0 +1,59 @@
+// tcl smacro::IncludeFile "reset.css"
+
+body {
+    background-color: #E5E5E5;
+    color:            #444444;
+    font-family:      "Verdana", sans-serif;
+    min-width:        700px;
+}
+
+p, pre,
+h1, h2 {
+    margin-bottom: 1em;
+    margin-top:    0.5em;
+}
+
+table {
+    border: 1px solid #C3C3C3;
+}
+
+td {
+    padding-bottom: 0.2em;
+    padding-left:   0.5em;
+    padding-right:  0.5em;
+    padding-top:    0.2em;
+}
+
+.evenrow {
+    background-color: #E5D5F5;
+}
+
+.oddrow {
+    background-color: #D5E5F5;
+}
+
+#header {
+    background-color: #828282;
+    border-bottom:    1px solid #C3C3C3;
+    color:            #E5E5E5;
+    padding:          1em;
+}
+
+#header ul {
+    list-style-type: none;
+}
+
+#header li {
+    display:       inline;
+    padding-right: 1em;
+}
+
+#footer {
+    border-top: 1px solid #C3C3C3;
+    font-size:  0.8em;
+    padding:    1em;
+}
+
+#content {
+    padding: 1em;
+}

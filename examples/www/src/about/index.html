@@ -1,0 +1,20 @@
+<!-- tcl smacro::IncludeFile "../header.html" -->
+<h1>About</h1>
+<table>
+    <!-- tcl
+        set table [list]
+        lappend table "TCL Version"  $tcl_version
+        lappend table "User"         $tcl_platform(user)
+        lappend table "Platform"     $tcl_platform(platform)
+        lappend table "Os"           "$tcl_platform(os) $tcl_platform(osVersion)"
+        lappend table "Architecture" $tcl_platform(machine)
+        set i 0
+        foreach { property value } $table {
+            set class "evenrow"
+            if { [expr ($i % 2) == 1] } { set class "oddrow" }
+            incr i
+            puts "<tr class='$class'><td class='$class'>$property</td><td class='$class'>$value</td></tr>"
+        }
+    -->
+</table>
+<!-- tcl smacro::IncludeFile "../footer.html" -->
