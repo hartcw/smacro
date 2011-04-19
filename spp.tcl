@@ -65,8 +65,10 @@ proc ProcessFile { filename } {
     set expType ""
 
     switch -- [file extension $filename] {
+        ".xml" -
         ".htm" -
-        ".html" {
+        ".html" -
+        ".php" {
             set expType "xml"
         }
         ".h" -
