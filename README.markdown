@@ -19,7 +19,7 @@ The embedded code must be contained with specific markers within the file. Three
 
 Examples
 --------
-The are examples of using the tool that show how to process a set of C++ source files, and also how to process a set of html, css, and javascipt files to statically generate a website.
+The are examples of using the tool that show how to process a set of C++ source files, and also how to process a set of html, css, and javascript files to statically generate a website.
 
 Architecture
 ------------

@@ -47,7 +47,7 @@ proc ::smacro::WriteOutput { dst str } {
 
     if { $str == "" } {
 
-        puts $dst ""
+        puts -nonewline $dst "\n"
 
     } else {
 
@@ -369,7 +369,10 @@ proc ::smacro::ProcessInternal { } {
 proc ::smacro::Process { src dst type root } {
 
     variable expType
+    variable values
+
     set expType $type
+    array unset values
 
     set srcName $src
     set dstName $dst
@@ -384,7 +387,7 @@ proc ::smacro::Process { src dst type root } {
 
     if { $dstName != "stdout" } {
         set dstName [file nativename [file normalize $dstName]]
-        set dstFile [open $dstName w]
+        set dstFile [open $dstName [list WRONLY BINARY CREAT TRUNC]]
     }
 
     if { $rootPath != "" } {
@@ -483,7 +486,7 @@ proc ::smacro::Main { argv } {
     return $ok
 }
 
-if { [file tail $argv0] == "smacro.tcl" } {
+if { [info exists argv0] && [file tail $argv0] == "smacro.tcl" } {
 
     if { [::smacro::Main $argv] } {
 
@@ -492,4 +495,3 @@ if { [file tail $argv0] == "smacro.tcl" } {
 
     return 1
 }
-

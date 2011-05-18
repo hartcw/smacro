@@ -29,6 +29,7 @@
 
 set options(Input)      ""
 set options(Output)     "output"
+set options(Copy)       0
 set options(Verbose)    1
 set options(Force)      0
 set options(ScriptDir)  ""
@@ -65,8 +66,10 @@ proc ProcessFile { filename } {
     set expType ""
 
     switch -- [file extension $filename] {
+        ".xml" -
         ".htm" -
-        ".html" {
+        ".html" -
+        ".php" {
             set expType "xml"
         }
         ".h" -
@@ -89,7 +92,7 @@ proc ProcessFile { filename } {
         PrintMessage "Processing: $filename"
         smacro::Process $filename $dstFile $expType ""
 
-    } else {
+    } elseif { $options(Copy) } {
 
         # Just copy it across
 
@@ -168,6 +171,7 @@ proc Usage { } {
     puts "Options:"
     puts "  -i, --input     Directory of source file templates"
     puts "  -o, --output    Target directory for generated files"
+    puts "  -c, --copy      Copy across plain files as well as processed files"
     puts "  -s, --silent    Enables silent operation"
     puts "  -t, --smacro    Specifies directory of the smacro script"
     puts "  -f, --force     Turn off timestamp check when copying files"
@@ -196,6 +200,11 @@ proc ParseOptions { argv } {
             "-o" -
             "--output" {
                 set options(Output) [lindex $argv $i]
+                incr i
+            }
+            "-c" -
+            "--copy" {
+                set options(Copy) 1
                 incr i
             }
             "-s" -
@@ -274,8 +283,8 @@ proc Main { argv } {
 }
 
 if { [Main $argv] } {
-    exit 0
+
+    return 0
 }
 
-exit 1
-
+return 1
