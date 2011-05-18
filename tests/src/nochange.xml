@@ -1,0 +1,10 @@
+<doc>
+  <!-- tcl set value1 "this has no output" -->
+  <element>
+  </element>
+  <!-- tcl
+    set value2 "this has no output"
+    set value3 "this has no output"
+  -->
+  <element><!-- tcl set value4 "this has no output" --></element>
+</doc>
