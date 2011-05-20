@@ -1,2 +1,2 @@
 #!/usr/bin/env tclsh
-exec ../../spp.tcl -t ../.. -i src -o staging >&@ stdout
+exec ../../spp.tcl -c -t ../.. -i src -o staging >&@ stdout

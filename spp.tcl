@@ -205,7 +205,6 @@ proc ParseOptions { argv } {
             "-c" -
             "--copy" {
                 set options(Copy) 1
-                incr i
             }
             "-s" -
             "--silent" {
