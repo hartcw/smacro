@@ -80,7 +80,7 @@ proc ::smacro::GetValue { var } {
 
     variable values
 
-    set value ""
+    set value "0"
 
     if { [info exists values($var)] } {
 
