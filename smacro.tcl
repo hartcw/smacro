@@ -337,7 +337,6 @@ proc ::smacro::ProcessInternal { } {
 
     variable srcFile
     variable dstFile
-    variable expType
     variable indent
 
     set interpreter [interp create]
